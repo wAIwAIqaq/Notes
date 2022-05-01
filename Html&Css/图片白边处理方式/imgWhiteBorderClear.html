@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body>
+        <div class="father">
+                <div class="son">
+                        <img src="./img.png" style="width: 100%;height: 100%;">
+                    </div>
+                    <div class="son">
+                        <img src="./img.png" style="width: 100%;height: 100%;">
+                    </div>
+                    <div class="son">
+                        <img src="./img.png" style="width: 100%;height: 100%;">
+                    </div>
+        </div>
+
+</body>
+<style>
+  *{
+      margin: 0;
+      padding: 0;
+   }
+   .father{
+         /* set父盒子 font-size：0 消除图片空隙 */
+        font-size: 0;
+        border: 5px solid skyblue;
+   }
+  .son{
+      /* set子盒子 display:inline-block 无法消除水平方向上的空隙*/
+      /* 应该设置在父盒子的儿子标签上 */
+      /* 如果只是设置img标签的 display:block无法消除垂直方向上的空隙 */
+      display: inline-block;
+      width:100px;
+      height: 100px;
+      /* ？？？img 标签怎么消除与父盒子border的空隙？？？ */
+      border:2px solid red;
+      /* 或者 set子盒子或者img标签 
+      vertical-align:middle;或者top bottom text-bottom text-top sub -webkit-baseline-middle
+      消除垂直方向的空隙
+      */
+      vertical-align: middle;
+  }
+</style>
+</html>
