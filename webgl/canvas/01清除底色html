@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="canvas"> </canvas>
+  </body>
+  <script>
+    const canvas = document.getElementById("canvas");
+    console.log(canvas);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    // 2d
+    // const gl = canvas.getContext("2d");
+    // 3d
+    const gl = canvas.getContext("webgl");
+    console.log(gl);
+    // 声明底色
+    gl.clearColor(0, 0, 0, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+  </script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    #canvas {
+      background-color: antiquewhite;
+    }
+  </style>
+</html>
