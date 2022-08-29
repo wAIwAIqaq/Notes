@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span class="pentagram" />
+  </body>
+  <style>
+    body {
+      display: grid;
+      vertical-align: middle;
+      align-items: center;
+      margin: 0;
+      height: 100vh;
+      justify-items: center;
+    }
+    .pentagram {
+      width: 200px;
+      aspect-ratio: 1;
+      background: orange;
+      clip-path: polygon(50% 0,65% 40% , 100% 40%, 72% 60%, 85% 100%,50% 75%,15% 100%,28% 60%,0 40%,35% 40%);
+    }
+  </style>
+</html>
