@@ -8,6 +8,7 @@ import { mkdir } from "fs/promises";
 
 import commandLineArgs from "command-line-args";
 import commandLineUsage from "command-line-usage";
+import { interact } from "./lib/interact.js";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const corpus = loadCorpus("corpus/data.json");
@@ -48,10 +49,22 @@ if ("help" in options) {
   console.log(usage);
   process.exit();
 } else {
-  const title = options.title || pickTitle();
-  const article = generate(title, { corpus, ...options });
-  const output = saveCorpus(title, article);
-  console.log(`生成成功！文章保存于 :${output}`);
+  let title = options.title || pickTitle();
+  (async function () {
+    if (Object.keys(options).length <= 0) {
+      const answers = await interact([
+        { text: "请输入文章主题", value: title },
+        { text: "请输入最小字数", value: 6000 },
+        { text: "请输入最大字数", value: 10000 },
+      ]);
+      title = answers[0];
+      options.min = answers[1];
+      options.max = answers[2];
+    }
+    const article = generate(title, { corpus, ...options });
+    const output = saveCorpus(title, article);
+    console.log(`生成成功！文章保存于 :${output}`);
+  }());
 }
 
 function saveCorpus(title, article) {
@@ -81,6 +94,7 @@ function parseOption(options = {}) {
   }
   return options;
 }
+
 function loadCorpus(src) {
   const path = resolve(__dirname, src);
   const data = readFileSync(path, { encoding: "utf-8" });
