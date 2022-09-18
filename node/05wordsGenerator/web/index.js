@@ -1,5 +1,7 @@
+
 import { generate } from "../lib/generate.js";
 import { createRandomPicker } from "../lib/random.js";
+console.log(document)
 const options = document.querySelector('.options');
 const config = { min: 2000, max: 5000 };
 options.addEventListener("change", ({ target }) => {
