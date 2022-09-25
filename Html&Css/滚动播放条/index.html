@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="tip">
+      <div class="loop">
+        <span>?</span>
+        <span>1.寒蝉凄切,对长亭晚</span>
+        <span>2.骤雨初歇,都门怅饮无绪</span>
+        <span
+          >3.留恋处,兰舟催发。执手相看泪眼，竟无语凝噎。念去去，千里烟波，暮霭沉沉楚天阔。</span
+        >
+        <span>4.多情自古伤离别，更那堪，冷落清秋节！</span>
+        <span
+          >5.今宵酒醒何处？杨柳岸，晓风残月。此去经年，应是良辰好景虚设。便纵有千种风情，更与何人说？</span
+        >
+      </div>
+    </div>
+  </body>
+  <style>
+    .tip {
+      height: 40px;
+      background: rgb(253, 226, 226);
+      color: #f56c6c;
+      border: #f56c6c 1px solid;
+      border-radius: 4px;
+      font-size: 14px;
+      padding: 10px 20px;
+      box-sizing: border-box;
+      transition: height 0.3s linear;
+    }
+    .loop {
+      display: flex;
+      height: 20px;
+      line-height: 20px;
+      flex-wrap: nowrap;
+      overflow-y: hidden;
+    }
+    .tip:hover {
+      height: 140px;
+      overflow-y: hidden;
+    }
+    .tip:hover .loop {
+      display: grid;
+      overflow-y: unset;
+    }
+  </style>
+</html>
