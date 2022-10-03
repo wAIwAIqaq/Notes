@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dota2</title>
+  </head>
+  <body>
+    <video
+      id="video"
+      src="./video.mp4"
+      width="200"
+      oncanplay="init()"
+      loop
+    ></video>
+    <canvas id="cvs"></canvas>
+    <canvas id="cvs2" onclick="video.play()"></canvas>
+  </body>
+  <script>
+    const init = () => {
+      const video = document.getElementById("video");
+      const ctx = cvs.getContext("2d");
+      const ctx2 = cvs2.getContext("2d");
+      cvs.height = cvs2.height = video.offsetHeight;
+      cvs.width = cvs2.width = video.offsetWidth;
+      const playVideo = () => {
+        requestAnimationFrame(playVideo);
+        const { width, height } = cvs;
+        ctx.drawImage(video, 0, 0, width, height);
+        // console.log(width, height)
+        const data = ctx.getImageData(0, 0, width, height).data;
+        ctx2.clearRect(0, 0, width, height);
+        const bl = 2;
+        ctx2.font = "12px serif";
+        for (let i = 0; i < data.length; i += 4 * bl) {
+          const x = parseInt(((i + 1) % (width * 4)) / 4);
+          const y = parseInt(i / (width * 4));
+          if (x % bl == 0 && y % bl == 0) {
+            const g = parseInt((data[i] + data[i + 1] + data[i + 2]) / 1.5);
+            ctx2.fillStyle = `rgba(${g},${g},${g},${data[i + 3]})`;
+            ctx2.fillText('.',x,y);
+          }
+        }
+      };
+      playVideo();
+    };
+  </script>
+  <style>
+    body {
+      display: flex;
+    }
+    video,
+    canvas {
+      border: 1px solid #ff0000;
+    }
+  </style>
+</html>
